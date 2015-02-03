@@ -26,8 +26,9 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('homestead'),
-
+	'local' => array('gilmar-OptiPlex-780'),
+	'staging' => array('staging-server'),
+  	'production' => array('production-server')
 ));
 
 /*

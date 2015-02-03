@@ -17,10 +17,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $table = 'users';
 
 	/**
-	 * The attributes excluded from the model's JSON form.
+	 * The table primary key
 	 *
-	 * @var array
+	 * @var string
 	 */
-	protected $hidden = array('password', 'remember_token');
+	protected $primaryKey = 'user_id';
 
+
+	public function getCreatedAtAttribute($date)
+	{
+	    return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y H:i:s');
+	}
+
+	public function getUpdatedAtAttribute($date)
+	{
+	    return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y H:i:s');
+	}
+
+	public function __toString()
+	{
+	    return sprintf( "%s %s" , $this->first_name, $this->last_name ) ;
+	}
 }
