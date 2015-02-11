@@ -17,3 +17,28 @@ Route::get('/', function()
 });
 
 Route::resource('usuarios', 'UserController');
+
+Route::get('usuarios/{id}/delete', [
+  'uses' => 'UserController@destroy',
+  'as' => 'usuarios.destroy'
+]);
+
+Route::get('usuarios/search', [
+  'uses' => 'UserController@search',
+  'as' => 'usuarios.search'
+]);
+
+Route::get('login', [
+  'uses' => 'UserController@showLogin',
+  'as' => 'usuario.login'
+]);
+
+Route::post('signin', [
+  'uses' => 'UserController@signin',
+  'as' => 'usuario.signin'
+]);
+
+Route::get('logout', [
+  'uses' => 'UserController@logout',
+  'as' => 'usuario.logout'
+]);
